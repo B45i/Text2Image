@@ -5,8 +5,6 @@ function app() {
         textColor: '#000000',
         generatedImages: [],
         addImage(dataUrl) {
-            let img = new Image();
-            img.src = dataUrl;
             this.generatedImages.push(dataUrl);
         },
         generate(text) {
@@ -29,6 +27,11 @@ function app() {
             let pages = this.content.trim().match(/(.|[\r\n]){1,1000}/g);
 
             (pages || []).forEach(this.generate.bind(this));
+        },
+        onDownload() {
+            (this.generatedImages || []).forEach(img => {
+                window.navigator.msSaveBlob(new Blob(img));
+            });
         },
     };
 }
