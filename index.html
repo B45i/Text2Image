@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram Image Make</title>
+        <meta charset="UTF-8" />
+    </head>
+
+    <body>
+        <div id="app"></div>
+        <div x-data="{ open: false }">
+            <button @click="open = true">Open Dropdown</button>
+
+            <ul x-show="open" @click.away="open = false">
+                Dropdown Body
+            </ul>
+        </div>
+        <script src="src/index.js"></script>
+    </body>
+</html>
