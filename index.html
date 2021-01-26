@@ -20,57 +20,72 @@
         </nav>
 
         <div id="app" class="m-3" x-data="app()">
-            <div>
-                <div class="mb-3">
-                    <label for="main-text" class="form-label">Enter Text</label>
-                    <textarea
-                        class="form-control"
-                        id="main-text"
-                        rows="5"
-                        placeholder="Enter Text Content"
-                        x-model="content"
-                    ></textarea>
-                </div>
+            <div class="mb-3">
+                <label for="main-text" class="form-label">Enter Text</label>
+                <textarea
+                    class="form-control"
+                    id="main-text"
+                    rows="5"
+                    placeholder="Enter Text Content"
+                    x-model="content"
+                ></textarea>
+            </div>
 
-                <div class="row">
-                    <div class="col mb-3 row">
-                        <label for="color-text" class="col-sm-2 col-form-label"
-                            >Text Color</label
-                        >
-                        <div class="col-3">
-                            <input
-                                type="color"
-                                id="color-text"
-                                class="form-control-color"
-                                x-model="textColor"
-                            />
-                        </div>
-                    </div>
-                    <div class="col mb-3 row">
-                        <label for="color-bg" class="col-sm-2 col-form-label"
-                            >Background Color</label
-                        >
-                        <div class="col-3">
-                            <input
-                                type="color"
-                                class="form-control-color"
-                                id="color-bg"
-                                x-model="bgc"
-                            />
-                        </div>
+            <div class="row">
+                <div class="col mb-3 row">
+                    <label for="color-text" class="col-sm-2 col-form-label"
+                        >Text Color</label
+                    >
+                    <div class="col-3">
+                        <input
+                            type="color"
+                            id="color-text"
+                            class="form-control-color"
+                            x-model="textColor"
+                        />
                     </div>
                 </div>
-                <button class="btn btn-primary" x-on:click="onGenerate">
+                <div class="col mb-3 row">
+                    <label for="color-bg" class="col-sm-2 col-form-label"
+                        >Background Color</label
+                    >
+                    <div class="col-3">
+                        <input
+                            type="color"
+                            class="form-control-color"
+                            id="color-bg"
+                            x-model="bgc"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <button
+                    class="btn btn-primary"
+                    x-on:click="onGenerate"
+                    x-bind:disabled="!content"
+                >
                     Generate
+                </button>
+
+                <button
+                    class="btn btn-primary"
+                    x-on:click="onDownload"
+                    x-show="generatedImages.length"
+                >
+                    Download
                 </button>
             </div>
 
-            <template x-for="img in generatedImages" :key="img">
-                <img x-bind:src="img" />
-            </template>
+            <div class="img-grid">
+                <template x-for="img in generatedImages" :key="img">
+                    <img x-bind:src="img" class="" />
+                </template>
+            </div>
         </div>
-        <div class="visually-hidden0" id="hidden-div"></div>
-        <script></script>
+
+        <div class="visually-hidden" id="hidden-div"></div>
+
         <script src="./alpine.js" defer></script>
         <script src="./dom-to-image.min.js" defer></script>
         <script src="index.js"></script>

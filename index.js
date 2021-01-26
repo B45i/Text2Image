@@ -1,6 +1,6 @@
 function app() {
     return {
-        content: 'hello',
+        content: '',
         bgc: '#efefef',
         textColor: '#000000',
         generatedImages: [],

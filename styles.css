@@ -8,3 +8,15 @@
     padding: 24px;
     overflow: hidden;
 }
+
+.img-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.img-grid img {
+    max-width: 100%;
+    display: block;
+    border: 1px solid #444;
+}
